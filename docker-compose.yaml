@@ -1,0 +1,18 @@
+services:
+  runner:
+    image: gitlab/gitlab-runner:alpine
+    privileged: true
+    restart: unless-stopped
+    volumes:
+      - ./config:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+    post_start:
+      - command: /usr/bin/gitlab-runner register --non-interactive --url ${GITLAB_URL} --token ${RUNNER_TOKEN} --executor docker --docker-image alpine:latest
+
+  cleaner:
+    build:
+      context: .
+    privileged: true
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "$(date) - $(realpath $0)" >> /var/log/daemon.log
