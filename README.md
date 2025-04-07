@@ -11,3 +11,27 @@ Em seguida, faça:
 ```
 docker compose up --force-recreate --build --remove-orphans --wait
 ```
+
+## Update
+
+Com base na [documentação oficial](https://docs.gitlab.com/runner/install/docker/#upgrade-runner-version).
+
+Atualize tudo no SO:
+
+```
+apt update && apt upgrade -y && apt dist-upgrade -y && apt autoremove -y && apt autoclean
+```
+
+Atualize a imagem utilizada:
+
+```
+docker pull gitlab/gitlab-runner:alpine
+```
+
+Suba a _build_ novamente:
+
+```
+git fetch --all && git pull
+
+docker compose up --force-recreate --build --remove-orphans --wait
+```
