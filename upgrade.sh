@@ -42,4 +42,7 @@ docker image prune -f >/dev/null
 docker compose ps
 echo ""
 echo "🚀 Runner atualizado para v${VERSION}."
-echo "⚠️  Lembre-se de commitar a mudança do docker-compose.yaml no repositório!"
+echo ""
+echo "⚠️  Registre a versão no repositório — copie e cole:"
+echo ""
+echo "git add docker-compose.yaml && git commit -m \"Atualização do runner para a v${VERSION}, acompanhando o GitLab.\" && git push origin main"
